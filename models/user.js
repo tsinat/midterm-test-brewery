@@ -141,9 +141,11 @@ userSchema.methods.generateToken = function() {
     return jwt.sign(payload, JWT_SECRET);
 };
 
-userSchema.statics.edit = (id, passedObj) => {
+userSchema.statics.edit = (id, passedObj, cb) => {
     User.findByIdAndUpdate(id, {
         $set: passedObj
+    }, {
+        new: true
     }, (err, updatedUser) => {
         if (err) cb(err);
 
@@ -155,12 +157,16 @@ userSchema.statics.edit = (id, passedObj) => {
     });
 };
 
-userSchema.statics.addAuction = (user, auction, cb) => {
-    user.auctions.push(auction._id);
-    user.save((err, addedAuction) => {
+userSchema.statics.addSampled = (user, auction, cb) => {
+    User.findById(user, (err, user) => {
         if (err) cb(err)
 
-        cb(null, addedAuction)
+        user.sampledBeer.push(auction);
+        user.save((err, savedBeer) => {
+            if (err) cb(err)
+
+            cb(null, savedBeer)
+        })
     })
 }
 

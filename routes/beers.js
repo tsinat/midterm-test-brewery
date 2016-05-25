@@ -6,15 +6,16 @@ var Beer = require('../models/beer');
 var User = require('../models/user');
 
 
-router.get('/', (req, res) => {
+router.get('/beer', (req, res) => {
     var  options = {
         method: 'GET',
         url: 'http://api.brewerydb.com/v2/beer/random?key=d4faa7d83432d9d553144019512c48c2'
     };
-    request(options, function(err, res, body) {
-        if(err) throw new Error(err);
-        console.log(body.id)
-        Beer.create(body.data, (err, beer) => {
+    request(options, function(error, response, body) {
+        if(error) throw new Error(error);
+        var result = JSON.parse(body)
+
+        Beer.create(result.data, (err, beer) => {
             if(err) throw new Error(err);
 
             res.send(beer)
@@ -22,20 +23,20 @@ router.get('/', (req, res) => {
     })
 })
 
-// router.get('/', (req, res) => {
-//     Beer.find({}, (err, auctions) => {
-//         if (err) return res.status(400).send(err);
-//
-//         else res.send(auctions);
-//     });
-// });
+router.get('/', (req, res) => {
+    Beer.find({}, (err, beers) => {
+        if (err) return res.status(400).send(err);
 
-router.get('/:id', (req, res) => {
-    Beer.getOne(req.params.id, (err, auction) => {
+        else res.send(beers);
+    });
+});
+
+router.get('/:id', User.isLoggedIn,  (req, res) => {
+    Beer.getOne(req.params.id, (err, beer) => {
         if (err) {
             res.status(400).send(err);
         } else {
-            res.send(auction);
+            res.send(beer);
         }
     });
 });

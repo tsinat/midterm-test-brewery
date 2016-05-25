@@ -3,11 +3,14 @@
 var mongoose = require('mongoose');
 
 var beerSchema = new mongoose.Schema({
-    id: {type: String, required: true, required:true},
-    name: {type: String, required: true, required:true},
-    nameDisplay:{type: Date, default: Date.now},
-    description: {type: Date, required: true},
-    rate: {type: Number}
+    id: {type: String},
+    name: {type: String},
+    nameDisplay:{type: String },
+    description: {type: Object},
+    rate: [{
+        value: { type: Number},
+        rater: { type: mongoose.Schema.Types.ObjectId, ref: 'User'}
+    }]
 });
 
 beerSchema.statics.getOne = (id, cb) => {
@@ -18,7 +21,7 @@ beerSchema.statics.getOne = (id, cb) => {
 };
 
 beerSchema.statics.create = (newBeer, cb) => {
-    console.log('beer create:', newBeer);
+    console.log('beer create:', newBeer.id);
     var beer = new Beer({
         id: newBeer.id,
         name: newBeer.name,

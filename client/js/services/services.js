@@ -31,4 +31,29 @@ app.service('Auth', function($http, $q) {
                 return $q.reject(res.data);
             });
     };
+    this.editPro = (id, user) => {
+        return $http.put(`/users/${id}`, user)
+            .then(res => {
+                return this.getProfile();
+            })
+            .catch(err => {
+                return $q.reject(err)
+            });
+    };
+    this.getAllBeer = () => {
+        return $http.get('/api/beers');
+    };
+
+    this.getOne = id => {
+        return $http.get(`/api/beers/${id}`)
+    };
+
+    this.getNewBeer = () => {
+        return $http.get('/api/beers/beer')
+    };
+
+    this.addToMySamples = (userId, beerId) => {
+        return $http.put(`/users/${userId}/sampleBeer/${beerId}`)
+    }
+
 });

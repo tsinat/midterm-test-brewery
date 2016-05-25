@@ -23,6 +23,22 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/html/login.html',
             controller: 'loginCtrl'
         })
+        .state('beer', {
+            url: '/beer',
+            templateUrl: '/html/beer.html',
+            controller: 'beerCtrl'
+        })
+        .state('beerDetail', {
+            url: '/beerDetail/:id',
+            templateUrl: '/html/beerDetail.html',
+            controller: 'beerDetailCtrl',
+            resolve: {
+                name: function (Auth, $stateParams) {
+                    console.log($stateParams.id);
+                    return Auth.getOne($stateParams.id)
+                }
+            }
+        })
         .state('profile', {
             url: '/profile',
             templateUrl: '/html/profile.html',

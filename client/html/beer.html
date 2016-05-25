@@ -1,0 +1,31 @@
+<div class='container '>
+    <div class="row">
+        <div class="beerContainer">
+            <h1 class='text-center'>Click on the Beer you want to sample</h1>
+            <table class="table">
+                <thead>
+                    <tr class='mybeer'>
+                        <th ng-click='sortBy("name")'>Name</th>
+                        <th ng-click='sortBy("nameDisplay")'>nameDisplay</th>
+                        <th ng-click='sortBy("description")'>description</th>
+                        <th ng-click='sortBy("sampled ")'>Sampled</th>
+                        <th ng-click='sortBy("rating ")'>Rating</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class='mybeer' ng-repeat='beer in beers | filter:searchFilter | orderBy:sortOrder track by $index' ui-sref='beerDetail({ id: beer._id })'>
+                        <td>{{beer.name}}</td>
+                        <td>{{beer.nameDisplay}}</td>
+                        <td>{{beer.description}}</td>
+                        <td>{{beer.Sampled}}</td>
+                        <td>{{beer.Rating}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="btn btn-success btn-lg newBeer" ng-click='newBeer()'>New Beer</button>
+        </div>
+    </div>
+
+
+
+</div>

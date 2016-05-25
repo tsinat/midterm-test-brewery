@@ -6,6 +6,7 @@ var router = express.Router();
 var User = require('../models/user');
 
 
+
 router.post('/register', (req, res) => {
     console.log(req.body);
     User.register(req.body, (err, savedUser) => {
@@ -50,11 +51,11 @@ router.get('/', User.auth(), (req, res) => {
 });
 
 router.get('/:id', User.auth(), (req, res) => {
-    User.find(req.params.id, (err, user) => {
+    User.findById(req.params.id, (err, user) => {
         if (err) return res.status(400).send(err)
 
         res.send(user)
-    }).select('-password');
+    }).select('-password').populate('Beer');
 });
 
 router.delete('/:id', User.auth(), (req, res) => {
@@ -65,5 +66,12 @@ router.delete('/:id', User.auth(), (req, res) => {
     })
 })
 
+router.put('/:userId/sampleBeer/:beerId', User.isLoggedIn, (req, res) => {
+    User.addSampled(req.params.userId, req.params.beerId, (err, addedBeer) => {
+        if(err) res.status(400).send(err);
+
+        res.send(addedBeer);
+    })
+})
 
 module.exports = router;
