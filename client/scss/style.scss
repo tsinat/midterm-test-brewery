@@ -1,0 +1,66 @@
+.btn-group-lg > .btn,
+.btn-lg {
+    border-radius: 0;
+    background-color: inherit;
+    color: silver;
+}
+.navbar {
+    border-radius: 0;
+}
+.btn-home {
+    padding: 10px 80px;
+    border-radius: 5px;
+}
+.glyphicon-folder-open {
+    font-size: 4em;
+}
+.album-container {
+    width: 33%;
+    float: left;
+    /*color: skyblue;*/
+}
+.btn-add {
+    margin-top: 40px;
+}
+.img-detail {
+    width: 200px;
+    height: 200px;
+}
+.img-large {
+    width: 400px;
+    height: 500px;
+}
+.signup {
+    background-color: #252525;
+    border-radius: 5px;
+    padding: 10px 80px;
+}
+.currentUser {
+    float: right;
+    color: white;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.mybeer{
+    min-width: 300px;
+}
+.samplebeer{
+    background-color: #252525;
+    border-radius: 10px;
+}
+.newBeer {
+    background-color: skyblue;
+    border-radius: 10px;
+    padding:10px 30px;
+    color: white;
+}
+.mysampledbeers {
+    margin-top: 40px;
+    border-radius: 10px;
+    background-color: #2ecc71;
+    color: white;
+}
+.names{
+    font-weight: bold;
+    font-size: 1.5em;
+}
