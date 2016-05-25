@@ -1,8 +1,38 @@
-<h1>sampledBeer</h1>
+<div class='container '>
 
-<div class="" ng-repeat='beer in sumpledBeers'>
-    <div class="">
-        {{beer}}
+    <h1>Login and add Samples to see your list</h1>
+
+    <div class="" ng-repeat='beer in sumpledBeers'>
+        <div class="">
+            <span class='names'>Name:</span>{{beer.name}}
+        </div>
+        <div class="">
+            <span class='names'>Display Name:</span> {{beer.nameDisplay}}
+        </div>
+        <div class="">
+            <span class='names'>Description:</span>{{beer.description}}
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+        </div>
+        <select class="form-group">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+            <option>10</option>
+        </select>
+        <button class='btn btn-success'>Rate</button>
+
+
+
     </div>
 
 </div>
