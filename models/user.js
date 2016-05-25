@@ -34,6 +34,13 @@ var userSchema = new mongoose.Schema({
         ref: 'Beer'
     }]
 });
+userSchema.statics.getOne = (id, cb) => {
+    User.findById(id, (err, result) => {
+        if(err) cb(err);
+
+        cb(null, result);
+    }).populate('sampledBeer');
+}
 
 userSchema.statics.auth = roleRequired => {
     return (req, res, next) => {

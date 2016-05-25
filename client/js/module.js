@@ -28,6 +28,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '/html/beer.html',
             controller: 'beerCtrl'
         })
+        .state('sampledBeer', {
+            url: '/sampledBeer',
+            templateUrl: '/html/sampledBeer.html',
+            controller: 'sampledBeerCtrl'
+        })
         .state('beerDetail', {
             url: '/beerDetail/:id',
             templateUrl: '/html/beerDetail.html',

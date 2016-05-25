@@ -54,6 +54,10 @@ app.service('Auth', function($http, $q) {
 
     this.addToMySamples = (userId, beerId) => {
         return $http.put(`/users/${userId}/sampleBeer/${beerId}`)
+    };
+
+    this.getMySampledBeer = id => {
+        return $http.get(`/users/${id}`)
     }
 
 });

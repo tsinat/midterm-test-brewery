@@ -33,7 +33,29 @@ app.controller('mainCtrl', function($scope, Auth, $state) {
         Auth.editPro($scope.currentUser._id, user)
     }
 
+    $scope.mySampledBeer = () => {
+
+        Auth.getMySampledBeer($scope.currentUser._id)
+            .then(res => {
+                console.log(res.data.sampledBeer);
+                $scope.sumpledBeers = res.data.sampledBeer;
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 });
+app.controller('sampledBeerCtrl', function($scope, Auth){
+    console.log('sampledBeerCtrl');
+    Auth.getMySampledBeer($scope.currentUser._id)
+        .then(res => {
+            console.log(res.data.sampledBeer);
+            $scope.sumpledBeers = res.data.sampledBeer;
+        })
+        .catch(err => {
+            console.log(err);
+        })
+})
 app.controller('homeCtrl', function($scope) {
     console.log('homeCtrl');
 });

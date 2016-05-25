@@ -57,6 +57,7 @@ gulp.task('js', function() {
         .pipe(sourcemaps.init())
         .pipe(concat('bundle.js'))
         .pipe(babel({presets: ['es2015'] }))
+        .on('error', console.error.bind(console))
         .pipe(annotate())
         .pipe(uglify())
         .pipe(sourcemaps.write())

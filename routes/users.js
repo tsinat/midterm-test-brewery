@@ -51,11 +51,11 @@ router.get('/', User.auth(), (req, res) => {
 });
 
 router.get('/:id', User.auth(), (req, res) => {
-    User.findById(req.params.id, (err, user) => {
+    User.getOne(req.params.id, (err, user) => {
         if (err) return res.status(400).send(err)
 
         res.send(user)
-    }).select('-password').populate('Beer');
+    })
 });
 
 router.delete('/:id', User.auth(), (req, res) => {
