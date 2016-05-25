@@ -28,11 +28,11 @@ var userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
-    // auctions: [{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Auction'
-    // }]
+    },
+    sampledBeer: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Beer'
+    }]
 });
 
 userSchema.statics.auth = roleRequired => {
