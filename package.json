@@ -10,7 +10,6 @@
     "node": "5.10.1"
   },
   "dependencies": {
-    "appdmg": "^0.4.5",
     "aws-sdk": "^2.3.14",
     "babel": "^6.5.2",
     "babel-preset-es2015": "^6.9.0",
